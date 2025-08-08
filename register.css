@@ -435,12 +435,7 @@ input.valid, select.valid, textarea.valid {
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
 }
 
-/* Specific styling for engine size and year fields */
-input[name="engine-size"]:focus {
-    border-color: var(--dm-primary-green);
-    box-shadow: 0 0 0 3px rgba(30, 203, 139, 0.25);
-}
-
+/* Specific styling for car year field */
 input[name="car-year"]:focus {
     border-color: var(--dm-primary-green);
     box-shadow: 0 0 0 3px rgba(30, 203, 139, 0.25);
