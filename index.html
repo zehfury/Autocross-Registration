@@ -48,10 +48,15 @@
             <legend>Car Info</legend>
             <input type="text" name="car-make-model" placeholder="Car Make & Model" required>
             <input type="number" name="car-year" placeholder="Year (YYYY)" min="1900" max="2099" step="1" pattern="[0-9]{4}" title="Please enter a 4-digit year (e.g., 2020)" required>
-            <input type="text" name="engine-size" placeholder="Engine Size (e.g., 1.5, 2.0, 2.5)" pattern="[0-9]+\.?[0-9]*" title="Please enter engine size in liters (e.g., 1.5, 2.0, 2.5)" required>
+            <select name="engine-size" required>
+                <option value="" disabled selected>Engine Size Range</option>
+                <option value="1.0-1.5">1.0 - 1.5 L</option>
+                <option value="1.5-2.0">1.5 - 2.0 L</option>
+                <option value="2.0+">2.0+ L</option>
+            </select>
             <div class="field-help">
                 <small>💡 <strong>Car Year:</strong> Enter 4-digit year (e.g., 2020, 2015)</small><br>
-                <small>💡 <strong>Engine Size:</strong> Enter in liters (e.g., 1.5, 2.0, 2.5)</small>
+                <small>💡 <strong>Engine Size:</strong> Select engine size range from dropdown</small>
             </div>
             <select name="transmission" required>
                 <option value="" disabled selected>Transmission (AT / MT)</option>
@@ -74,7 +79,16 @@
                 <option value="Own">Own</option>
                 <option value="Borrow">Need to Borrow</option>
             </select>
-            <input type="text" name="t-shirt-size" placeholder="T-shirt Size" required>
+            <select name="t-shirt-size" required>
+                <option value="" disabled selected>T-shirt Size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
+            </select>
             <select name="help-organize" required>
                 <option value="" disabled selected>Willing to Help Organize? (Yes / No)</option>
                 <option value="Yes">Yes</option>
