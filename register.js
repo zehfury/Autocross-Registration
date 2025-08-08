@@ -175,13 +175,10 @@ function validateForm(formData) {
         errors.push('Please enter a valid car year (YYYY format, between 1900 and ' + (new Date().getFullYear() + 1) + ')');
     }
     
-    // Engine size validation (liters format)
+    // Engine size validation (dropdown format)
     const engineSize = formData.get('engine-size');
-    if (engineSize) {
-        const engineSizeNum = parseFloat(engineSize);
-        if (isNaN(engineSizeNum) || engineSizeNum < 0.5 || engineSizeNum > 10.0) {
-            errors.push('Please enter a valid engine size in liters (e.g., 1.5, 2.0, 2.5) between 0.5 and 10.0 liters');
-        }
+    if (!engineSize || engineSize === '') {
+        errors.push('Please select an engine size from the dropdown');
     }
     
     return errors;
@@ -478,17 +475,7 @@ form.addEventListener('input', e => {
         }
     }
     
-    // Engine size validation (liters)
-    if (fieldName === 'engine-size' && field.value) {
-        const engineSize = parseFloat(field.value);
-        if (isNaN(engineSize) || engineSize < 0.5 || engineSize > 10.0) {
-            field.classList.add('error');
-            field.classList.remove('valid');
-        } else {
-            field.classList.remove('error');
-            field.classList.add('valid');
-        }
-    }
+
 });
 
 // Add keyboard shortcut to reset form (Ctrl+Shift+R for admin use)
