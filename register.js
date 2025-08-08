@@ -172,13 +172,16 @@ function validateForm(formData) {
     // Car year validation
     const carYear = parseInt(formData.get('car-year'));
     if (carYear && (carYear < 1900 || carYear > new Date().getFullYear() + 1)) {
-        errors.push('Please enter a valid car year');
+        errors.push('Please enter a valid car year (YYYY format, between 1900 and ' + (new Date().getFullYear() + 1) + ')');
     }
     
-    // Engine size validation
-    const engineSize = parseInt(formData.get('engine-size'));
-    if (engineSize && (engineSize < 50 || engineSize > 10000)) {
-        errors.push('Please enter a valid engine size');
+    // Engine size validation (liters format)
+    const engineSize = formData.get('engine-size');
+    if (engineSize) {
+        const engineSizeNum = parseFloat(engineSize);
+        if (isNaN(engineSizeNum) || engineSizeNum < 0.5 || engineSizeNum > 10.0) {
+            errors.push('Please enter a valid engine size in liters (e.g., 1.5, 2.0, 2.5) between 0.5 and 10.0 liters');
+        }
     }
     
     return errors;
@@ -460,6 +463,30 @@ form.addEventListener('input', e => {
     if (fieldName === 'mobile-number' && field.value) {
         if (!validatePhone(field.value)) {
             field.classList.add('error');
+        }
+    }
+    
+    // Car year validation
+    if (fieldName === 'car-year' && field.value) {
+        const year = parseInt(field.value);
+        if (isNaN(year) || year < 1900 || year > new Date().getFullYear() + 1) {
+            field.classList.add('error');
+            field.classList.remove('valid');
+        } else {
+            field.classList.remove('error');
+            field.classList.add('valid');
+        }
+    }
+    
+    // Engine size validation (liters)
+    if (fieldName === 'engine-size' && field.value) {
+        const engineSize = parseFloat(field.value);
+        if (isNaN(engineSize) || engineSize < 0.5 || engineSize > 10.0) {
+            field.classList.add('error');
+            field.classList.remove('valid');
+        } else {
+            field.classList.remove('error');
+            field.classList.add('valid');
         }
     }
 });
