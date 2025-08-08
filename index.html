@@ -4,9 +4,10 @@
         <link rel="stylesheet" href="register.css">
     </head>
     <body>
+ 
 <div class="container">
     <form method="post" action="" name="registration-form" class="registration-wizard">
-        <h4> AutoCross Registration Form</h4>
+        <h4>Registration Form</h4>
 
         <!-- Stepper -->
         <ol class="stepper" aria-label="Registration steps">
@@ -46,8 +47,12 @@
         <fieldset class="form-step" data-step="2">
             <legend>Car Info</legend>
             <input type="text" name="car-make-model" placeholder="Car Make & Model" required>
-            <input type="number" name="car-year" placeholder="Year" min="1900" max="2099" step="1" required>
-            <input type="number" name="engine-size" placeholder="Engine Size (cc)" required>
+            <input type="number" name="car-year" placeholder="Year (YYYY)" min="1900" max="2099" step="1" pattern="[0-9]{4}" title="Please enter a 4-digit year (e.g., 2020)" required>
+            <input type="text" name="engine-size" placeholder="Engine Size (e.g., 1.5, 2.0, 2.5)" pattern="[0-9]+\.?[0-9]*" title="Please enter engine size in liters (e.g., 1.5, 2.0, 2.5)" required>
+            <div class="field-help">
+                <small>💡 <strong>Car Year:</strong> Enter 4-digit year (e.g., 2020, 2015)</small><br>
+                <small>💡 <strong>Engine Size:</strong> Enter in liters (e.g., 1.5, 2.0, 2.5)</small>
+            </div>
             <select name="transmission" required>
                 <option value="" disabled selected>Transmission (AT / MT)</option>
                 <option value="AT">Automatic (AT)</option>
